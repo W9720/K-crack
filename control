@@ -1,10 +1,9 @@
 Package: com.kmi.crack
 Name: KmiCrack
 Version: 1.0.1
-Architecture: iphoneos-arm
+Architecture: iphoneos-arm64
 Description: K米会员破解 - 解锁VIP付费功能，强制修改用户名
 Maintainer: Crack Team
 Author: Crack Team
 Section: Tweaks
 Depends: mobilesubstrate (>= 0.9.5000), firmware (>= 15.0)
-Homepage: https://github.com/W9720/K-crack
