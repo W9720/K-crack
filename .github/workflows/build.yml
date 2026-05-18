@@ -16,16 +16,21 @@ jobs:
 
       - name: 安装完整Theos环境
         run: |
-          git clone --recursive https://github.com/theos/theos.git ~/theos
-          echo "THEOS=~/theos" >> $GITHUB_ENV
+          git clone --recursive https://github.com/theos/theos.git /Users/runner/theos
+          echo "THEOS=/Users/runner/theos" >> $GITHUB_ENV
+          echo "/Users/runner/theos/bin" >> $GITHUB_PATH
           curl -fsSL https://raw.githubusercontent.com/theos/sdks/master/setup.sh | bash
           brew install ldid
-          chmod +x ~/theos/bin/*
+          chmod +x /Users/runner/theos/bin/*
+        shell: bash
 
       - name: 编译打包（正式版，无debug）
         run: |
+          export THEOS=/Users/runner/theos
+          export PATH="/Users/runner/theos/bin:$PATH"
           make clean
           make package FINALPACKAGE=1 ARCHS=arm64 THEOS_PACKAGE_SCHEME=rootless
+        shell: bash
 
       - name: 上传deb文件
         uses: actions/upload-artifact@v4
