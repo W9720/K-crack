@@ -16,13 +16,18 @@ jobs:
       - name: 安装完整Theos环境
         run: |
           git clone --recursive https://github.com/theos/theos.git ~/theos
-          echo "THEOS=~/theos" >> $GITHUB_ENV
           curl -fsSL https://raw.githubusercontent.com/theos/sdks/master/setup.sh | bash
           brew install ldid
           chmod +x ~/theos/bin/*
+          echo "THEOS=~/theos" >> $GITHUB_ENV
+          echo "THEOS_MAKE_PATHS=~/theos/makefiles" >> $GITHUB_ENV
+          echo "PATH=~/theos/bin:$PATH" >> $GITHUB_ENV
 
       - name: 编译打包（正式版，无debug）
         run: |
+          export THEOS=~/theos
+          export THEOS_MAKE_PATHS=~/theos/makefiles
+          export PATH=~/theos/bin:$PATH
           make clean
           make package FINALPACKAGE=1 ARCHS=arm64 THEOS_PACKAGE_SCHEME=rootless
 
