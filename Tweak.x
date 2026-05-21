@@ -24,7 +24,7 @@
 %hook KMUserInfoData
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (NSString *)customerName {
@@ -36,7 +36,7 @@
 %hook UserInfoData
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (NSString *)userNickName {
@@ -48,7 +48,7 @@
 %hook EvRoomMemberInfo
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (NSString *)mCustomerName {
@@ -60,7 +60,7 @@
 %hook EvUserProfilesInfo
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (long long)userVipExpireTime {
@@ -84,7 +84,7 @@
 %hook NearbyUserData
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (NSString *)userNickName {
