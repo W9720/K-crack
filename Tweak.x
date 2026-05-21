@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 %hook EvSDKUserInfo
 
@@ -149,11 +150,11 @@
 - (void)updateUI:(id)a0 info:(id)a1 {
     %orig(a0, a1);
 
-    MyHomePageSelfInfoCellView *cellView = [self valueForKey:@"_view"];
+    id cellView = [self valueForKey:@"_view"];
     if (cellView) {
-        UIImageView *vipImageView = [cellView valueForKey:@"userVipImageView"];
+        id vipImageView = [cellView valueForKey:@"userVipImageView"];
         if (vipImageView) {
-            vipImageView.hidden = NO;
+            [vipImageView setHidden:NO];
         }
     }
 }
@@ -165,9 +166,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
@@ -178,9 +179,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
@@ -191,9 +192,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
@@ -204,9 +205,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
@@ -217,9 +218,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
@@ -230,9 +231,9 @@
 - (void)updateUI:(id)a0 {
     %orig(a0);
 
-    UIImageView *vipImageView = [self valueForKey:@"vipImageView"];
+    id vipImageView = [self valueForKey:@"vipImageView"];
     if (vipImageView) {
-        vipImageView.hidden = NO;
+        [vipImageView setHidden:NO];
     }
 }
 
