@@ -4,7 +4,7 @@
 %hook EvSDKUserInfo
 
 - (int)userVipType {
-    return 999;
+    return 3;
 }
 
 - (double)userVipExpireTime {
