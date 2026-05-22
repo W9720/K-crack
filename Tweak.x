@@ -1,6 +1,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define CUSTOM_AVATAR_URL @"https://wx.qlogo.cn/mmhead/ver_1/ibXjKH6OF1TM3yHTcjOO0QMVlgpSSfVGVsD0Pe9ibLia2Ecu1akBkBVkpXD9xQmHKSj5hX57NkKCelY0e1ibks7e7iaCIPqcsZT89wMFyagWmst2cpdictJibGj0QLmQeVRhMHf/0"
+
 %hook EvSDKUserInfo
 
 - (int)userVipType {
@@ -17,6 +19,10 @@
 
 - (NSString *)userNickName {
     return @"喜爱民谣破解 免费分享";
+}
+
+- (NSString *)userAvatarURL {
+    return CUSTOM_AVATAR_URL;
 }
 
 %end
@@ -41,6 +47,10 @@
 
 - (NSString *)userNickName {
     return @"喜爱民谣破解 免费分享";
+}
+
+- (NSString *)userAvatarURL {
+    return CUSTOM_AVATAR_URL;
 }
 
 %end
@@ -103,6 +113,10 @@
     return 3;
 }
 
+- (NSString *)userAvatarURL {
+    return CUSTOM_AVATAR_URL;
+}
+
 %end
 
 %hook LiveVideoRoomInfo
@@ -148,9 +162,7 @@
 %hook UIImageView
 
 - (void)setImage:(UIImage *)image {
-    // 检查是否是VIP图标（14x14大小）
     if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
-        // 尝试将灰色图片转换为彩色
         if (image) {
             UIImage *coloredImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
             %orig(coloredImage);
