@@ -147,56 +147,36 @@
 
 %hook MyHomePageSelfInfoCellView
 
-- (void)setUserVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
+- (UIImageView *)userVipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
 }
 
 %end
 
 %hook NewPersonalFirstHeaderViewController
 
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
 }
 
 %end
 
 %hook NearbyUserInfoView
 
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
-}
-
-%end
-
-%hook PersonalHomePageHeaderView
-
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
-}
-
-%end
-
-%hook RoomMemberInfoCell
-
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
-}
-
-%end
-
-%hook LiveRoomMemberCell
-
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
-}
-
-%end
-
-%hook UserInfoView
-
-- (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(NO);
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
 }
 
 %end
