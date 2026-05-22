@@ -159,18 +159,14 @@
 
 %end
 
-%hook MyHomePageSelfInfoCell
+%hook MyHomePageView
 
-- (void)updateUI:(id)userData info:(id)info {
-    // 确保userData的vipType被设置为3
-    if (userData) {
-        [userData setValue:@3 forKey:@"userVipType"];
+- (void)setUserInfo:(id)userInfo {
+    // 确保userInfo的vipType被设置为3
+    if (userInfo) {
+        [userInfo setValue:@3 forKey:@"userVipType"];
     }
-    // 确保info的vipType也被设置为3
-    if (info) {
-        [info setValue:@3 forKey:@"userVipType"];
-    }
-    %orig(userData, info);
+    %orig(userInfo);
 }
 
 %end
