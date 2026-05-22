@@ -145,96 +145,62 @@
 
 %end
 
-%hook MyHomePageSelfInfoCell
+%hook MyHomePageSelfInfoCellView
 
-- (void)updateUI:(id)a0 info:(id)a1 {
-    %orig(a0, a1);
-
-    id cellView = [self valueForKey:@"_view"];
-    if (cellView) {
-        id vipImageView = [cellView valueForKey:@"userVipImageView"];
-        if (vipImageView) {
-            [vipImageView setHidden:NO];
-        }
-    }
+- (void)setUserVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook NewPersonalFirstHeaderViewController
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook NearbyUserInfoView
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook PersonalHomePageHeaderView
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook RoomMemberInfoCell
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook LiveRoomMemberCell
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
 
 %hook UserInfoView
 
-- (void)updateUI:(id)a0 {
-    %orig(a0);
-
-    id vipImageView = [self valueForKey:@"vipImageView"];
-    if (vipImageView) {
-        [vipImageView setHidden:NO];
-    }
+- (void)setVipImageViewHidden:(BOOL)hidden {
+    %orig(self, NO);
 }
 
 %end
+
+%ctor {
+    NSLog(@"[KmiCrack] Loaded successfully, VIP unlocked!");
+}
