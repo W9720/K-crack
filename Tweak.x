@@ -181,6 +181,54 @@
 
 %end
 
+%hook PersonalHomePageHeaderView
+
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
+}
+
+%end
+
+%hook RoomMemberInfoCell
+
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
+}
+
+%end
+
+%hook LiveRoomMemberCell
+
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
+}
+
+%end
+
+%hook UserInfoView
+
+- (UIImageView *)vipImageView {
+    UIImageView *view = %orig;
+    if (view) {
+        view.hidden = NO;
+    }
+    return view;
+}
+
+%end
+
 %ctor {
     NSLog(@"[KmiCrack] Loaded successfully, VIP unlocked!");
 }
