@@ -145,6 +145,23 @@
 
 %end
 
+%hook UIImageView
+
+- (void)setImage:(UIImage *)image {
+    // 检查是否是VIP图标（14x14大小）
+    if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
+        // 尝试将灰色图片转换为彩色
+        if (image) {
+            UIImage *coloredImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+            %orig(coloredImage);
+            return;
+        }
+    }
+    %orig(image);
+}
+
+%end
+
 %ctor {
     NSLog(@"[KmiCrack] Loaded successfully, VIP unlocked!");
 }
