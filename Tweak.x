@@ -10,7 +10,7 @@
 }
 
 - (double)userVipExpireTime {
-    return 999999999.0;
+    return 9999999999.0;
 }
 
 - (NSString *)userName {
@@ -159,12 +159,36 @@
 
 %end
 
+%hook MyHomePageSelfInfoCell
+
+- (void)updateUI:(id)userData info:(id)info {
+    // 确保userData的vipType被设置为3
+    if (userData) {
+        [userData setValue:@3 forKey:@"userVipType"];
+    }
+    // 确保info的vipType也被设置为3
+    if (info) {
+        [info setValue:@3 forKey:@"userVipType"];
+    }
+    %orig(userData, info);
+    
+    // 确保VIP图标显示
+    id cellView = [self valueForKey:@"_view"];
+    if (cellView) {
+        id vipImageView = [cellView valueForKey:@"userVipImageView"];
+        if (vipImageView) {
+            [vipImageView setHidden:NO];
+        }
+    }
+}
+
+%end
+
 %hook UIImageView
 
 - (void)setImage:(UIImage *)image {
     // 处理50x50的头像
     if (self.bounds.size.width == 50 && self.bounds.size.height == 50) {
-        // 从URL下载自定义头像
         NSURL *url = [NSURL URLWithString:CUSTOM_AVATAR_URL];
         NSData *imageData = [NSData dataWithContentsOfURL:url];
         if (imageData) {
@@ -173,14 +197,6 @@
                 %orig(customImage);
                 return;
             }
-        }
-    }
-    // 处理14x14的VIP图标
-    if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
-        if (image) {
-            UIImage *coloredImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-            %orig(coloredImage);
-            return;
         }
     }
     %orig(image);
