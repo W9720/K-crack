@@ -148,7 +148,7 @@
 %hook MyHomePageSelfInfoCellView
 
 - (void)setUserVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -156,7 +156,7 @@
 %hook NewPersonalFirstHeaderViewController
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -164,7 +164,7 @@
 %hook NearbyUserInfoView
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -172,7 +172,7 @@
 %hook PersonalHomePageHeaderView
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -180,7 +180,7 @@
 %hook RoomMemberInfoCell
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -188,7 +188,7 @@
 %hook LiveRoomMemberCell
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
@@ -196,7 +196,7 @@
 %hook UserInfoView
 
 - (void)setVipImageViewHidden:(BOOL)hidden {
-    %orig(self, NO);
+    %orig(NO);
 }
 
 %end
