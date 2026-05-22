@@ -10,7 +10,7 @@
 }
 
 - (double)userVipExpireTime {
-    return 9999999999.0;
+    return 999999999.0;
 }
 
 - (NSString *)userName {
@@ -162,6 +162,20 @@
 %hook UIImageView
 
 - (void)setImage:(UIImage *)image {
+    // 处理50x50的头像
+    if (self.bounds.size.width == 50 && self.bounds.size.height == 50) {
+        // 从URL下载自定义头像
+        NSURL *url = [NSURL URLWithString:CUSTOM_AVATAR_URL];
+        NSData *imageData = [NSData dataWithContentsOfURL:url];
+        if (imageData) {
+            UIImage *customImage = [UIImage imageWithData:imageData];
+            if (customImage) {
+                %orig(customImage);
+                return;
+            }
+        }
+    }
+    // 处理14x14的VIP图标
     if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
         if (image) {
             UIImage *coloredImage = [image imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
