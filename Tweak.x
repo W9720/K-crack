@@ -159,30 +159,6 @@
 
 %end
 
-%hook MyHomePageView
-
-- (void)setUserInfo:(id)userInfo {
-    // 确保传入的 userInfo 的 vipType 被设置为 3
-    if (userInfo) {
-        [userInfo setValue:@3 forKey:@"userVipType"];
-    }
-    %orig(userInfo);
-}
-
-%end
-
-%hook NewPersonalFirstHeaderViewController
-
-- (void)updateUI:(id)userInfo {
-    // 确保传入的 userInfo 的 vipType 被设置为 3
-    if (userInfo) {
-        [userInfo setValue:@3 forKey:@"userVipType"];
-    }
-    %orig(userInfo);
-}
-
-%end
-
 %hook UIImageView
 
 - (void)setImage:(UIImage *)image {
@@ -199,6 +175,24 @@
         }
     }
     %orig(image);
+}
+
+- (void)setHidden:(BOOL)hidden {
+    // 对于14x14的VIP图标，强制不隐藏
+    if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
+        %orig(NO);
+        return;
+    }
+    %orig(hidden);
+}
+
+- (void)setTintColor:(UIColor *)tintColor {
+    // 对于14x14的VIP图标，强制设置为黄色
+    if (self.bounds.size.width == 14 && self.bounds.size.height == 14) {
+        %orig([UIColor colorWithRed:255/255.0 green:204/255.0 blue:0/255.0 alpha:1.0]);
+        return;
+    }
+    %orig(tintColor);
 }
 
 %end
