@@ -171,15 +171,6 @@
         [info setValue:@3 forKey:@"userVipType"];
     }
     %orig(userData, info);
-    
-    // 确保VIP图标显示
-    id cellView = [self valueForKey:@"_view"];
-    if (cellView) {
-        id vipImageView = [cellView valueForKey:@"userVipImageView"];
-        if (vipImageView) {
-            [vipImageView setHidden:NO];
-        }
-    }
 }
 
 %end
