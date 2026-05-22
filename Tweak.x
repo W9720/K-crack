@@ -145,27 +145,6 @@
 
 %end
 
-%hook MyHomePageSelfInfoCell
-
-- (void)updateUI:(id)a0 info:(id)a1 {
-    // 修改传入的 userData 的 vipType
-    if (a0) {
-        [a0 setValue:@3 forKey:@"userVipType"];
-    }
-    %orig(a0, a1);
-    
-    // 强制显示VIP图标
-    id cellView = [self valueForKey:@"_view"];
-    if (cellView) {
-        id vipImageView = [cellView valueForKey:@"userVipImageView"];
-        if (vipImageView) {
-            [vipImageView setValue:@NO forKey:@"hidden"];
-        }
-    }
-}
-
-%end
-
 %ctor {
     NSLog(@"[KmiCrack] Loaded successfully, VIP unlocked!");
 }
