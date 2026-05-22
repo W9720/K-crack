@@ -145,6 +145,28 @@
 
 %end
 
+%hook UIImageView
+
+- (void)setAlpha:(CGFloat)alpha {
+    NSString *viewName = NSStringFromClass([self class]);
+    if ([viewName containsString:@"VIP"] || [viewName containsString:@"Vip"] || [viewName containsString:@"vip"]) {
+        %orig(1.0);
+    } else {
+        %orig(alpha);
+    }
+}
+
+- (void)setHidden:(BOOL)hidden {
+    NSString *viewName = NSStringFromClass([self class]);
+    if ([viewName containsString:@"VIP"] || [viewName containsString:@"Vip"] || [viewName containsString:@"vip"]) {
+        %orig(NO);
+    } else {
+        %orig(hidden);
+    }
+}
+
+%end
+
 %ctor {
     NSLog(@"[KmiCrack] Loaded successfully, VIP unlocked!");
 }
