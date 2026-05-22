@@ -162,11 +162,12 @@
 %hook MyHomePageView
 
 - (void)setUserInfo:(id)userInfo {
-    // 确保userInfo的vipType被设置为3
-    if (userInfo) {
-        [userInfo setValue:@3 forKey:@"userVipType"];
-    }
     %orig(userInfo);
+    // 确保myInfo的vipType被正确设置
+    id myInfo = [self valueForKey:@"myInfo"];
+    if (myInfo) {
+        [myInfo setValue:@3 forKey:@"userVipType"];
+    }
 }
 
 %end
