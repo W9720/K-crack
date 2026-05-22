@@ -171,6 +171,18 @@
 
 %end
 
+%hook NewPersonalFirstHeaderViewController
+
+- (void)updateUI:(id)userInfo {
+    // 确保传入的 userInfo 的 vipType 被设置为 3
+    if (userInfo) {
+        [userInfo setValue:@3 forKey:@"userVipType"];
+    }
+    %orig(userInfo);
+}
+
+%end
+
 %hook UIImageView
 
 - (void)setImage:(UIImage *)image {
